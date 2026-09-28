@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```
+<title>LoyezLabs</title>
+
+<meta name="description" content="LoyezLabs - Building the future with AI.">
+
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        background: #050505;
+        color: white;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    /* NAVBAR */
+
+    nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 70px;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        padding: 0 7%;
+
+        background: rgba(5, 5, 5, 0.85);
+        border-bottom: 1px solid #222;
+
+        backdrop-filter: blur(15px);
+
+        z-index: 100;
+    }
+
+    .logo {
+        font-size: 22px;
+        font-weight: bold;
+        letter-spacing: 1px;
+    }
+
+    .logo span {
+        color: #00ff88;
+    }
+
+    nav button {
+        background: #00ff88;
+        border: none;
+        padding: 10px 18px;
+        border-radius: 8px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    nav button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 0 20px rgba(0,255,136,0.4);
+    }
+
+    /* HERO */
+
+    .hero {
+        min-height: 100vh;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        text-align: center;
+
+        padding: 100px 20px;
+
+        background:
+            radial-gradient(
+                circle at center,
+                rgba(0,255,136,0.12),
+                transparent 45%
+            );
+    }
+
+    .hero-content {
+        max-width: 900px;
+
+        animation: appear 1s ease;
+    }
+
+    .badge {
+        display: inline-block;
+
+        padding: 8px 14px;
+
+        border: 1px solid rgba(0,255,136,0.4);
+
+        border-radius: 50px;
+
+        color: #00ff88;
+
+        margin-bottom: 25px;
+
+        font-size: 14px;
+    }
+
+    h1 {
+        font-size: clamp(55px, 10vw, 120px);
+
+        letter-spacing: -6px;
+
+        line-height: 0.9;
+    }
+
+    h1 span {
+        color: #00ff88;
+    }
+
+    .hero p {
+        margin-top: 30px;
+
+        color: #999;
+
+        font-size: 20px;
+
+        line-height: 1.6;
+    }
+
+    .buttons {
+        margin-top: 35px;
+
+        display: flex;
+
+        justify-content: center;
+
+        gap: 15px;
+    }
+
+    .primary,
+    .secondary {
+        padding: 14px 24px;
+
+        border-radius: 10px;
+
+        text-decoration: none;
+
+        font-weight: bold;
+
+        transition: 0.25s;
+    }
+
+    .primary {
+        background: #00ff88;
+        color: black;
+    }
+
+    .secondary {
+        border: 1px solid #333;
+        color: white;
+    }
+
+    .primary:hover,
+    .secondary:hover {
+        transform: translateY(-4px);
+    }
+
+    /* SECTION */
+
+    section {
+        padding: 110px 7%;
+    }
+
+    .title {
+        text-align: center;
+
+        margin-bottom: 60px;
+    }
+
+    .title small {
+        color: #00ff88;
+
+        text-transform: uppercase;
+
+        letter-spacing: 2px;
+    }
+
+    .title h2 {
+        margin-top: 15px;
+
+        font-size: 50px;
+    }
+
+    .title p {
+        margin: 20px auto;
+
+        max-width: 600px;
+
+        color: #888;
+
+        line-height: 1.7;
+    }
+
+    /* CARDS */
+
+    .cards {
+        display: grid;
+
+        grid-template-columns: repeat(3, 1fr);
+
+        gap: 20px;
+
+        max-width: 1100px;
+
+        margin: auto;
+    }
+
+    .card {
+        padding: 30px;
+
+        background: #0c0c0c;
+
+        border: 1px solid #222;
+
+        border-radius: 18px;
+
+        transition: 0.3s;
+    }
+
+    .card:hover {
+        transform: translateY(-8px);
+
+        border-color: #00ff88;
+
+        box-shadow:
+            0 10px 40px rgba(0,255,136,0.08);
+    }
+
+    .icon {
+        width: 50px;
+        height: 50px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        background: rgba(0,255,136,0.1);
+
+        color: #00ff88;
+
+        border-radius: 12px;
+
+        font-weight: bold;
+
+        margin-bottom: 25px;
+    }
+
+    .card h3 {
+        font-size: 22px;
+
+        margin-bottom: 12px;
+    }
+
+    .card p {
+        color: #888;
+
+        line-height: 1.7;
+    }
+
+    /* VISION */
+
+    .vision {
+        max-width: 1000px;
+
+        margin: auto;
+
+        text-align: center;
+
+        padding: 80px 30px;
+
+        border: 1px solid #222;
+
+        border-radius: 25px;
+
+        background:
+            radial-gradient(
+                circle,
+                rgba(0,255,136,0.08),
+                transparent 60%
+            );
+    }
+
+    .vision h2 {
+        font-size: 55px;
+
+        margin-top: 15px;
+    }
+
+    .vision p {
+        max-width: 650px;
+
+        margin: 25px auto;
+
+        color: #888;
+
+        line-height: 1.8;
+    }
+
+    /* FOOTER */
+
+    footer {
+        padding: 40px 7%;
+
+        border-top: 1px solid #222;
+
+        display: flex;
+
+        justify-content: space-between;
+
+        color: #666;
+    }
+
+    footer strong {
+        color: white;
+    }
+
+    /* ANIMATION */
+
+    @keyframes appear {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 750px) {
+
+        .cards {
+            grid-template-columns: 1fr;
+        }
+
+        .buttons {
+            flex-direction: column;
+        }
+
+        .buttons a {
+            width: 100%;
+        }
+
+        .title h2 {
+            font-size: 38px;
+        }
+
+        .vision h2 {
+            font-size: 40px;
+        }
+
+        footer {
+            flex-direction: column;
+            gap: 10px;
+            text-align: center;
+        }
+    }
+</style>
+```
+
+</head>
+
+<body>
+
+```
+<nav>
+
+    <div class="logo">
+        LOYEZ<span>LABS</span>
+    </div>
+
+    <button onclick="login()">
+        Sign in
+    </button>
+
+</nav>
+
+
+<div class="hero">
+
+    <div class="hero-content">
+
+        <div class="badge">
+            ● Building the future
+        </div>
+
+        <h1>
+            LOYEZ<span>LABS</span>
+        </h1>
+
+        <p>
+            Building the future with artificial intelligence,
+            software and innovative technology.
+        </p>
+
+        <div class="buttons">
+
+            <a class="primary" href="#technology">
+                Explore
+            </a>
+
+            <a class="secondary" href="#vision">
+                Our vision
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<section id="technology">
+
+    <div class="title">
+
+        <small>Technology</small>
+
+        <h2>
+            What we build
+        </h2>
+
+        <p>
+            LoyezLabs explores artificial intelligence,
+            software and new technology.
+        </p>
+
+    </div>
+
+
+    <div class="cards">
+
+        <div class="card">
+
+            <div class="icon">
+                AI
+            </div>
+
+            <h3>
+                Artificial Intelligence
+            </h3>
+
+            <p>
+                Intelligent systems designed to help people
+                solve problems and explore new possibilities.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">
+                &lt;/&gt;
+            </div>
+
+            <h3>
+                Software
+            </h3>
+
+            <p>
+                Modern software designed to be fast,
+                simple and powerful.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">
+                ⚡
+            </div>
+
+            <h3>
+                Innovation
+            </h3>
+
+            <p>
+                Experimental ideas and ambitious projects
+                exploring the future of technology.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section id="vision">
+
+    <div class="vision">
+
+        <small style="color:#00ff88; letter-spacing:2px;">
+            OUR VISION
+        </small>
+
+        <h2>
+            Build what doesn't exist yet.
+        </h2>
+
+        <p>
+            LoyezLabs is focused on creating and exploring
+            the next generation of technology.
+        </p>
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    <div>
+        © 2026 <strong>LoyezLabs</strong>
+    </div>
+
+    <div>
+        Building the future.
+    </div>
+
+</footer>
+
+
+<script>
+
+    function login() {
+
+        alert(
+            "Google Login coming soon!"
+        );
+
+    }
+
+</script>
+```
+
+</body>
+</html>
