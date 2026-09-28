@@ -6,75 +6,446 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 ```
-<title>LoyezLabs</title>
+<title>LoyezLabs — Building the Future</title>
+
+<meta name="description" content="LoyezLabs — Building the future with AI, software and technology.">
+
+<!-- Discord / social preview -->
+<meta property="og:title" content="LoyezLabs">
+<meta property="og:description" content="Building the future with AI.">
+<meta property="og:type" content="website">
 
 <style>
+    :root {
+        --bg: #050505;
+        --bg2: #0a0a0a;
+        --text: #ffffff;
+        --muted: #8b8b8b;
+        --green: #00ff88;
+        --green-dark: #00c96b;
+        --border: rgba(255,255,255,0.08);
+    }
+
     * {
-        box-sizing: border-box;
         margin: 0;
         padding: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
     }
 
     body {
-        font-family: Arial, sans-serif;
-        background: #050505;
-        color: white;
-        min-height: 100vh;
+        font-family: Inter, Arial, Helvetica, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        overflow-x: hidden;
     }
 
+    /* Background */
+
+    body::before {
+        content: "";
+        position: fixed;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(
+            circle,
+            rgba(0, 255, 136, 0.12),
+            transparent 70%
+        );
+        top: -250px;
+        left: 50%;
+        transform: translateX(-50%);
+        pointer-events: none;
+        z-index: -1;
+    }
+
+    .grid {
+        position: fixed;
+        inset: 0;
+        background-image:
+            linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+        background-size: 50px 50px;
+        mask-image: linear-gradient(to bottom, black, transparent 80%);
+        pointer-events: none;
+        z-index: -2;
+    }
+
+    /* Navigation */
+
     nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 76px;
         display: flex;
-        justify-content: space-between;
         align-items: center;
-        padding: 25px 7%;
-        border-bottom: 1px solid #222;
+        justify-content: space-between;
+        padding: 0 7%;
+        border-bottom: 1px solid var(--border);
+        background: rgba(5,5,5,0.72);
+        backdrop-filter: blur(18px);
+        z-index: 100;
     }
 
     .logo {
-        font-size: 24px;
-        font-weight: bold;
+        font-size: 21px;
+        font-weight: 800;
+        letter-spacing: -0.5px;
     }
 
-    .hero {
-        min-height: 80vh;
+    .logo span {
+        color: var(--green);
+    }
+
+    .nav-links {
         display: flex;
-        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .nav-links a {
+        color: #aaa;
+        text-decoration: none;
+        font-size: 14px;
+        transition: 0.25s;
+    }
+
+    .nav-links a:hover {
+        color: white;
+    }
+
+    .login-button {
+        border: 1px solid rgba(0,255,136,0.4);
+        background: rgba(0,255,136,0.08);
+        color: var(--green);
+        padding: 10px 17px;
+        border-radius: 10px;
+        cursor: pointer;
+        font-weight: 700;
+        transition: 0.25s;
+    }
+
+    .login-button:hover {
+        background: rgba(0,255,136,0.16);
+        transform: translateY(-2px);
+    }
+
+    /* Hero */
+
+    .hero {
+        min-height: 100vh;
+        display: flex;
         justify-content: center;
         align-items: center;
         text-align: center;
-        padding: 40px 20px;
+        padding: 120px 20px 80px;
+    }
+
+    .hero-content {
+        max-width: 1000px;
+        animation: heroIn 1s ease forwards;
+    }
+
+    .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        padding: 8px 14px;
+        border: 1px solid rgba(0,255,136,0.25);
+        background: rgba(0,255,136,0.06);
+        border-radius: 999px;
+        color: var(--green);
+        font-size: 13px;
+        margin-bottom: 28px;
+    }
+
+    .status-dot {
+        width: 7px;
+        height: 7px;
+        background: var(--green);
+        border-radius: 50%;
+        box-shadow: 0 0 15px var(--green);
+        animation: pulse 1.8s infinite;
     }
 
     .hero h1 {
-        font-size: clamp(50px, 10vw, 110px);
-        letter-spacing: -5px;
+        font-size: clamp(58px, 10vw, 125px);
+        line-height: 0.9;
+        letter-spacing: -7px;
+        font-weight: 900;
+    }
+
+    .hero h1 .green {
+        color: var(--green);
     }
 
     .hero p {
-        margin-top: 20px;
-        color: #999;
-        font-size: 20px;
+        max-width: 650px;
+        margin: 30px auto 0;
+        color: var(--muted);
+        font-size: clamp(17px, 2vw, 21px);
+        line-height: 1.7;
     }
 
-    .button {
-        display: inline-block;
-        margin-top: 35px;
-        padding: 15px 28px;
-        border-radius: 10px;
-        background: white;
-        color: black;
+    .hero-buttons {
+        margin-top: 38px;
+        display: flex;
+        justify-content: center;
+        gap: 13px;
+        flex-wrap: wrap;
+    }
+
+    .primary-button,
+    .secondary-button {
+        padding: 14px 23px;
+        border-radius: 11px;
         text-decoration: none;
-        font-weight: bold;
+        font-weight: 700;
+        transition: 0.25s;
     }
 
-    .button:hover {
-        transform: scale(1.05);
+    .primary-button {
+        background: var(--green);
+        color: #00150b;
+        box-shadow: 0 0 35px rgba(0,255,136,0.18);
     }
+
+    .primary-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 0 45px rgba(0,255,136,0.3);
+    }
+
+    .secondary-button {
+        border: 1px solid var(--border);
+        color: white;
+        background: rgba(255,255,255,0.03);
+    }
+
+    .secondary-button:hover {
+        background: rgba(255,255,255,0.08);
+        transform: translateY(-3px);
+    }
+
+    /* Sections */
+
+    section {
+        padding: 120px 7%;
+    }
+
+    .section-title {
+        max-width: 700px;
+        margin-bottom: 55px;
+    }
+
+    .section-title small {
+        color: var(--green);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+
+    .section-title h2 {
+        font-size: clamp(38px, 6vw, 65px);
+        margin-top: 12px;
+        letter-spacing: -3px;
+    }
+
+    .section-title p {
+        color: var(--muted);
+        margin-top: 18px;
+        line-height: 1.7;
+    }
+
+    /* Cards */
+
+    .cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+    }
+
+    .card {
+        position: relative;
+        padding: 30px;
+        min-height: 250px;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background: linear-gradient(
+            145deg,
+            rgba(255,255,255,0.045),
+            rgba(255,255,255,0.015)
+        );
+        overflow: hidden;
+        transition: 0.35s;
+    }
+
+    .card::before {
+        content: "";
+        position: absolute;
+        width: 150px;
+        height: 150px;
+        background: rgba(0,255,136,0.1);
+        filter: blur(60px);
+        top: -80px;
+        right: -80px;
+    }
+
+    .card:hover {
+        transform: translateY(-8px);
+        border-color: rgba(0,255,136,0.3);
+    }
+
+    .icon {
+        width: 46px;
+        height: 46px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 12px;
+        background: rgba(0,255,136,0.1);
+        color: var(--green);
+        font-size: 21px;
+        margin-bottom: 24px;
+    }
+
+    .card h3 {
+        font-size: 22px;
+        margin-bottom: 12px;
+    }
+
+    .card p {
+        color: var(--muted);
+        line-height: 1.65;
+        font-size: 15px;
+    }
+
+    /* Vision */
+
+    .vision {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 70px;
+        align-items: center;
+    }
+
+    .vision-box {
+        min-height: 400px;
+        border: 1px solid var(--border);
+        border-radius: 25px;
+        background:
+            radial-gradient(circle at center, rgba(0,255,136,0.12), transparent 55%),
+            #080808;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .orb {
+        width: 190px;
+        height: 190px;
+        border-radius: 50%;
+        border: 1px solid rgba(0,255,136,0.6);
+        box-shadow:
+            0 0 40px rgba(0,255,136,0.3),
+            inset 0 0 40px rgba(0,255,136,0.1);
+        animation: orb 5s ease-in-out infinite;
+    }
+
+    .vision-text h2 {
+        font-size: clamp(40px, 5vw, 65px);
+        letter-spacing: -3px;
+    }
+
+    .vision-text p {
+        color: var(--muted);
+        line-height: 1.8;
+        margin-top: 20px;
+    }
+
+    /* Footer */
 
     footer {
-        text-align: center;
-        padding: 30px;
+        padding: 45px 7%;
+        border-top: 1px solid var(--border);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         color: #666;
+        font-size: 14px;
+    }
+
+    footer strong {
+        color: white;
+    }
+
+    /* Animations */
+
+    @keyframes heroIn {
+        from {
+            opacity: 0;
+            transform: translateY(25px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes pulse {
+        0%, 100% {
+            opacity: 1;
+            transform: scale(1);
+        }
+        50% {
+            opacity: 0.4;
+            transform: scale(0.7);
+        }
+    }
+
+    @keyframes orb {
+        0%, 100% {
+            transform: scale(1) rotate(0deg);
+        }
+        50% {
+            transform: scale(1.12) rotate(180deg);
+        }
+    }
+
+    /* Mobile */
+
+    @media (max-width: 800px) {
+        .nav-links a {
+            display: none;
+        }
+
+        .cards {
+            grid-template-columns: 1fr;
+        }
+
+        .vision {
+            grid-template-columns: 1fr;
+        }
+
+        .hero h1 {
+            letter-spacing: -4px;
+        }
+
+        section {
+            padding: 80px 6%;
+        }
+
+        footer {
+            flex-direction: column;
+            gap: 12px;
+            text-align: center;
+        }
     }
 </style>
 ```
@@ -83,23 +454,173 @@
 
 <body>
 
-```
+<div class="grid"></div>
+
+<!-- NAVIGATION -->
+
 <nav>
-    <div class="logo">LOYEZLABS</div>
+    <div class="logo">LOYEZ<span>LABS</span></div>
+
+```
+<div class="nav-links">
+    <a href="#technology">Technology</a>
+    <a href="#vision">Vision</a>
+    <button class="login-button" onclick="login()">Sign in</button>
+</div>
+```
+
 </nav>
 
-<main class="hero">
-    <h1>LOYEZLABS</h1>
+<!-- HERO -->
 
-    <p>Building the future with AI.</p>
+<header class="hero">
+    <div class="hero-content">
 
-    <a class="button" href="#">Explore</a>
-</main>
+```
+    <div class="badge">
+        <span class="status-dot"></span>
+        Building the future
+    </div>
+
+    <h1>
+        LOYEZ<span class="green">LABS</span>
+    </h1>
+
+    <p>
+        Building intelligent technology, AI systems and software
+        designed to push what's possible.
+    </p>
+
+    <div class="hero-buttons">
+        <a class="primary-button" href="#technology">
+            Explore technology
+        </a>
+
+        <a class="secondary-button" href="#vision">
+            Our vision
+        </a>
+    </div>
+
+</div>
+```
+
+</header>
+
+<!-- TECHNOLOGY -->
+
+<section id="technology">
+
+```
+<div class="section-title">
+    <small>What we build</small>
+
+    <h2>Technology without limits.</h2>
+
+    <p>
+        LoyezLabs explores artificial intelligence, software,
+        automation and new technologies.
+    </p>
+</div>
+
+<div class="cards">
+
+    <div class="card">
+        <div class="icon">AI</div>
+
+        <h3>Artificial Intelligence</h3>
+
+        <p>
+            Intelligent systems designed to learn, reason and
+            help people solve complex problems.
+        </p>
+    </div>
+
+    <div class="card">
+        <div class="icon">⌘</div>
+
+        <h3>Software</h3>
+
+        <p>
+            Modern software experiences built around speed,
+            simplicity and powerful technology.
+        </p>
+    </div>
+
+    <div class="card">
+        <div class="icon">⚡</div>
+
+        <h3>Innovation</h3>
+
+        <p>
+            Experimental ideas and ambitious projects that
+            explore what technology could become.
+        </p>
+    </div>
+
+</div>
+```
+
+</section>
+
+<!-- VISION -->
+
+<section id="vision">
+
+```
+<div class="vision">
+
+    <div class="vision-box">
+        <div class="orb"></div>
+    </div>
+
+    <div class="vision-text">
+
+        <small style="color:#00ff88; letter-spacing:2px;">
+            THE VISION
+        </small>
+
+        <h2>
+            Build what doesn't exist yet.
+        </h2>
+
+        <p>
+            LoyezLabs is focused on exploring the next generation
+            of technology — from artificial intelligence to
+            software and experimental systems.
+        </p>
+
+    </div>
+
+</div>
+```
+
+</section>
+
+<!-- FOOTER -->
 
 <footer>
-    © 2026 LoyezLabs
-</footer>
+    <div>
+        © 2026 <strong>LoyezLabs</strong>
+    </div>
+
 ```
+<div>
+    Building the future.
+</div>
+```
+
+</footer>
+
+<script>
+
+    function login() {
+        alert(
+            "Google login is coming soon. Firebase Authentication will be connected here."
+        );
+    }
+
+</script>
 
 </body>
 </html>
+
